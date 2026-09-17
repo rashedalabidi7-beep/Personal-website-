@@ -6,15 +6,15 @@
   <title>رشيد العبيدي | Rashid Al-Qasir Alabidi</title>
   <style>
     :root {
-      --bg-color: #050507;
-      --card-bg: rgba(22, 22, 26, 0.8);
-      --card-border: rgba(255, 255, 255, 0.12);
+      --bg-color: #08090a;
+      --card-bg: rgba(22, 24, 29, 0.75);
+      --card-border: rgba(255, 255, 255, 0.1);
       --accent-color: #0a84ff;
       --accent-gradient: linear-gradient(135deg, #0a84ff 0%, #5e5ce6 100%);
-      --text-main: #ffffff;
-      --text-sub: #98989d;
-      --input-bg: rgba(118, 118, 128, 0.2);
-      --tag-bg: rgba(10, 132, 255, 0.15);
+      --text-main: #f5f5f7;
+      --text-sub: #a1a1a6;
+      --input-bg: rgba(255, 255, 255, 0.05);
+      --tag-bg: rgba(10, 132, 255, 0.12);
       --tag-color: #64d2ff;
       --card-radius: 20px;
     }
@@ -23,7 +23,7 @@
       box-sizing: border-box;
       margin: 0;
       padding: 0;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
       scroll-behavior: smooth;
     }
 
@@ -31,31 +31,30 @@
       background-color: var(--bg-color);
       color: var(--text-main);
       line-height: 1.6;
-      padding-bottom: 40px;
+      padding-bottom: 50px;
       background-image: 
-        radial-gradient(circle at 10% 10%, rgba(10, 132, 255, 0.12) 0%, transparent 40%),
-        radial-gradient(circle at 90% 80%, rgba(94, 92, 230, 0.12) 0%, transparent 40%);
+        radial-gradient(circle at 15% 15%, rgba(10, 132, 255, 0.1) 0%, transparent 40%),
+        radial-gradient(circle at 85% 85%, rgba(94, 92, 230, 0.1) 0%, transparent 40%);
       background-attachment: fixed;
     }
 
     .container {
-      max-width: 800px;
+      max-width: 850px;
       margin: 0 auto;
       padding: 0 16px;
     }
 
-    /* Navbar */
     nav {
       position: sticky;
-      top: 10px;
+      top: 12px;
       z-index: 100;
-      background: rgba(18, 18, 20, 0.85);
+      background: rgba(18, 20, 26, 0.8);
       backdrop-filter: blur(20px);
       -webkit-backdrop-filter: blur(20px);
       border: 1px solid var(--card-border);
       border-radius: 30px;
       margin: 16px 0 28px 0;
-      padding: 12px 20px;
+      padding: 12px 24px;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -63,8 +62,10 @@
 
     .logo {
       font-weight: 700;
-      font-size: 16px;
-      color: var(--text-main);
+      font-size: 15px;
+      background: var(--accent-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
 
     .nav-links {
@@ -84,26 +85,24 @@
       color: var(--accent-color);
     }
 
-    /* Hero Section */
     .hero {
       background: var(--card-bg);
-      backdrop-filter: blur(25px);
-      -webkit-backdrop-filter: blur(25px);
+      backdrop-filter: blur(20px);
       border: 1px solid var(--card-border);
       border-radius: var(--card-radius);
-      padding: 36px 20px;
+      padding: 40px 24px;
       text-align: center;
       margin-bottom: 24px;
     }
 
     .avatar-wrapper {
-      width: 110px;
-      height: 110px;
-      margin: 0 auto 16px auto;
+      width: 120px;
+      height: 120px;
+      margin: 0 auto 18px auto;
       border-radius: 50%;
       padding: 3px;
       background: var(--accent-gradient);
-      box-shadow: 0 8px 25px rgba(10, 132, 255, 0.35);
+      box-shadow: 0 10px 30px rgba(10, 132, 255, 0.3);
     }
 
     .avatar-img {
@@ -111,19 +110,27 @@
       height: 100%;
       border-radius: 50%;
       object-fit: cover;
-      background-color: #1c1c1e;
+      background-color: #1a1a1a;
     }
 
     .hero h1 {
-      font-size: 26px;
+      font-size: 28px;
       font-weight: 800;
       margin-bottom: 4px;
+    }
+
+    .hero .en-name {
+      font-size: 15px;
+      color: var(--accent-color);
+      font-weight: 600;
+      margin-bottom: 8px;
     }
 
     .hero p.subtitle {
       color: var(--text-sub);
       font-size: 14px;
-      margin-bottom: 18px;
+      max-width: 600px;
+      margin: 0 auto 20px auto;
     }
 
     .social-btns {
@@ -134,12 +141,12 @@
     }
 
     .btn-social {
-      background: rgba(255, 255, 255, 0.06);
+      background: rgba(255, 255, 255, 0.05);
       border: 1px solid var(--card-border);
       color: var(--text-main);
       padding: 8px 16px;
       border-radius: 20px;
-      font-size: 13px;
+      font-size: 12px;
       text-decoration: none;
       transition: all 0.2s;
     }
@@ -147,40 +154,47 @@
     .btn-social:hover {
       background: var(--accent-color);
       border-color: var(--accent-color);
+      color: #fff;
     }
 
-    /* General Section Styling */
     section {
       background: var(--card-bg);
-      backdrop-filter: blur(25px);
-      -webkit-backdrop-filter: blur(25px);
+      backdrop-filter: blur(20px);
       border: 1px solid var(--card-border);
       border-radius: var(--card-radius);
-      padding: 24px 20px;
+      padding: 28px 24px;
       margin-bottom: 24px;
     }
 
     .section-header {
-      font-size: 17px;
+      font-size: 18px;
       font-weight: 700;
-      color: var(--accent-color);
+      color: #fff;
       margin-bottom: 16px;
       display: flex;
       align-items: center;
       gap: 8px;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      padding-bottom: 10px;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 14px;
     }
 
     .card {
-      background: rgba(255, 255, 255, 0.03);
-      border: 1px solid rgba(255, 255, 255, 0.06);
+      background: rgba(255, 255, 255, 0.025);
+      border: 1px solid rgba(255, 255, 255, 0.05);
       border-radius: 14px;
       padding: 18px;
-      margin-bottom: 12px;
     }
 
     .card h3 {
       font-size: 15px;
       margin-bottom: 6px;
+      color: var(--text-main);
     }
 
     .card p {
@@ -200,64 +214,43 @@
       color: var(--tag-color);
       font-size: 11px;
       padding: 3px 10px;
-      border-radius: 10px;
-      font-weight: 600;
-    }
-
-    /* Certificates Grid */
-    .cert-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 12px;
-    }
-
-    .cert-item {
-      background: rgba(255, 255, 255, 0.03);
-      border: 1px solid rgba(255, 255, 255, 0.06);
-      border-radius: 12px;
-      padding: 14px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-    }
-
-    .cert-title {
-      font-size: 14px;
-      font-weight: 600;
-      margin-bottom: 4px;
-    }
-
-    .cert-issuer {
-      font-size: 12px;
-      color: var(--text-sub);
-      margin-bottom: 10px;
-    }
-
-    .cert-link {
-      font-size: 12px;
-      color: var(--accent-color);
-      text-decoration: none;
+      border-radius: 8px;
       font-weight: 500;
     }
 
-    /* Form */
+    .timeline-item {
+      border-right: 2px solid var(--accent-color);
+      padding-right: 14px;
+      margin-bottom: 16px;
+    }
+
+    .timeline-item h4 {
+      font-size: 14px;
+      color: #fff;
+    }
+
+    .timeline-item span {
+      font-size: 12px;
+      color: var(--text-sub);
+    }
+
     .form-group {
-      margin-bottom: 12px;
+      margin-bottom: 14px;
     }
 
     .form-group label {
       display: block;
       font-size: 12px;
       color: var(--text-sub);
-      margin-bottom: 4px;
+      margin-bottom: 6px;
     }
 
     .form-group input, .form-group textarea {
       width: 100%;
       background: var(--input-bg);
-      border: 1px solid transparent;
+      border: 1px solid var(--card-border);
       border-radius: 10px;
-      padding: 10px;
+      padding: 12px;
       font-size: 13px;
       color: var(--text-main);
       outline: none;
@@ -283,7 +276,7 @@
       text-align: center;
       font-size: 12px;
       color: var(--text-sub);
-      margin-top: 20px;
+      margin-top: 24px;
     }
 
     @media (max-width: 600px) {
@@ -294,104 +287,97 @@
 <body>
 
   <div class="container">
-    <!-- Navbar -->
+    <!-- Navigation -->
     <nav>
-      <div class="logo">رشيد العبيدي</div>
+      <div class="logo">Rashid Alabidi</div>
       <ul class="nav-links">
-        <li><a href="#about">نبذة عني</a></li>
-        <li><a href="#project">المشروع</a></li>
-        <li><a href="#certificates">الشهادات</a></li>
+        <li><a href="#about">الرؤية والأهداف</a></li>
+        <li><a href="#education">التعليم</a></li>
+        <li><a href="#projects">المشاريع والحلول</a></li>
+        <li><a href="#volunteering">الأثر المجتمعي</a></li>
         <li><a href="#contact">تواصل معي</a></li>
       </ul>
     </nav>
 
-    <!-- Hero Section -->
+    <!-- Hero Header -->
     <div class="hero">
       <div class="avatar-wrapper">
-        <img src="profile.jpg" alt="رشيد العبيدي" class="avatar-img" id="userPhoto">
+        <img src="profile.jpg" alt="رشيد العبيدي" class="avatar-img">
       </div>
       <h1>رشيد العبيدي</h1>
-      <p class="subtitle">Rashid Al-Qasir Alabidi | طالب تكنولوجيا معلومات ومطور حلول برمجية</p>
+      <div class="en-name">Rashid Al-Qasir Alabidi</div>
+      <p class="subtitle">طالب تكنولوجيا معلومات ومطور برمجيات | مهتم بالبحث العلمي، الأتمتة، وبناء الحلول البرمجية ذات الأثر المجتمعي المستدام.</p>
       
-      <!-- روابط الحسابات الشخصية -->
       <div class="social-btns">
-        <a href="https://orcid.org/0009-0006-7410-5763" target="_blank" class="btn-social">🔬 ORCID</a>
+        <a href="https://orcid.org/0009-0006-7410-5763" target="_blank" class="btn-social">🔬 ORCID Record</a>
         <a href="https://github.com/rashedalabidi7-beep" target="_blank" class="btn-social">🐙 GitHub</a>
         <a href="https://www.linkedin.com/in/rashed-alabidi" target="_blank" class="btn-social">💼 LinkedIn</a>
-        <a href="mailto:rashedalabidi7@gmail.com" class="btn-social">✉️ البريد الإلكتروني</a>
+        <a href="mailto:rashedalabidi7@gmail.com" class="btn-social">✉️ البريد الأكاديمي</a>
       </div>
     </div>
 
-    <!-- About Section -->
+    <!-- About & Academic Objective -->
     <section id="about">
-      <div class="section-header">📌 نبذة عني</div>
-      <p style="font-size: 13px; color: var(--text-sub); line-height: 1.8;">
-        أنا رشيد العبيدي، طالب تكنولوجيا معلومات بشغف كبير نحو البرمجة وبناء الأفكار الرقمية. أركز على تطوير تطبيقات الويب، تصميم الواجهات العصرية الحديثة، وأتمتة المهام اليومية، مع اهتمام بالأنشطة التطوعية والمبادرات التنموية.
+      <div class="section-header">🎯 الرؤية والهدف الأكاديمي</div>
+      <p style="font-size: 13.5px; color: var(--text-sub); line-height: 1.8;">
+        أسعى لتسخير العلوم التقنية وتكنولوجيا المعلومات لتطوير حلول رقمية تخدم المجتمع وتسهل عمليات أتمتة البيانات. أطمح لمتابعة دراساتي الأكاديمية العليا والتعمق في مجالات تكنولوجيا المعلومات وعلوم البيانات، والعمل على أبحاث تطبيقية تسهم في التنمية والتحول الرقمي.
       </p>
     </section>
 
-    <!-- Single Project Section -->
-    <section id="project">
-      <div class="section-header">🚀 المشروع الرئيسي</div>
-      <div class="card" style="margin-bottom: 0;">
-        <h3>💰 نظام إدارة ورواتب الموظفين الشامل Pro</h3>
-        <p>نظام بررمجي خفيف ومكامل لحساب أجور وساعات العمل الإضافية (Overtime)، البدلات، والاستقطاعات والتأمينات تلقائياً، مع دعم المزامنة السحابية وتصدير كشوفات الراتب مباشرة بصيغة PDF.</p>
-        <div class="tags" style="margin-bottom: 14px;">
+    <!-- Academic Background & Achievements -->
+    <section id="education">
+      <div class="section-header">🎓 المسار الأكاديمي والشهادات</div>
+      <div class="grid-2">
+        <div class="timeline-item">
+          <h4>جامعة حضرموت</h4>
+          <span>بكالوريوس تكنولوجيا المعلومات (IT)</span>
+        </div>
+        <div class="timeline-item">
+          <h4>برنامج McKinsey Forward</h4>
+          <span>المهارات الرقمية، التفكير التحليلي والقيادة</span>
+        </div>
+        <div class="timeline-item">
+          <h4>معهد حضرموت للغات</h4>
+          <span>تطوير مهارات اللغة الإنجليزية المتقدمة</span>
+        </div>
+        <div class="timeline-item">
+          <h4>مبادرة مركز الشباب العربي</h4>
+          <span>LinkedIn Learning - مسار التطوير البرمجي</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Key Projects -->
+    <section id="projects">
+      <div class="section-header">💻 المشاريع والحلول التقنية</div>
+      <div class="card">
+        <h3>💰 نظام إدارة ورواتب الموظفين الشامل (Salary Calculator Pro)</h3>
+        <p>تطبيق ويب متكامل لحساب مستحقات الموظفين، البدلات، وساعات العمل الإضافية، مع خاصية المزامنة السحابية وتوليد كشوفات الراتب المباشرة بصيغة PDF.</p>
+        <div class="tags" style="margin-bottom: 12px;">
           <span class="tag">HTML5 / CSS3</span>
           <span class="tag">JavaScript</span>
-          <span class="tag">Firebase Firestore</span>
-          <span class="tag">PDF Payslip</span>
+          <span class="tag">Cloud Database</span>
+          <span class="tag">PDF Generation</span>
         </div>
-        <a href="https://rashedalabidi7-beep.github.io/salary-calculator/" target="_blank" class="btn-social" style="display:inline-block; font-size:12px;">🔗 تجربة التطبيق المباشر</a>
+        <a href="https://rashedalabidi7-beep.github.io/salary-calculator/" target="_blank" class="btn-social" style="display:inline-block;">🔗 استعراض المشروع</a>
       </div>
     </section>
 
-    <!-- Certificates Section -->
-    <section id="certificates">
-      <div class="section-header">📜 الشهادات والمؤهلات الأكاديمية</div>
-      <div class="cert-grid">
-        
-        <div class="cert-item">
-          <div>
-            <div class="cert-title">برنامج McKinsey Forward</div>
-            <div class="cert-issuer">McKinsey.org</div>
-          </div>
-          <a href="https://www.linkedin.com/in/rashed-alabidi" target="_blank" class="cert-link">عرض التفاصيل ←</a>
-        </div>
-
-        <div class="cert-item">
-          <div>
-            <div class="cert-title">إدارة المشاريع والتسويق الرقمي</div>
-            <div class="cert-issuer">شهادة تخصصية</div>
-          </div>
-          <a href="https://www.linkedin.com/in/rashed-alabidi" target="_blank" class="cert-link">عرض التفاصيل ←</a>
-        </div>
-
-        <div class="cert-item">
-          <div>
-            <div class="cert-title">دورة اللغة الإنجليزية</div>
-            <div class="cert-issuer">معهد حضرموت للغات</div>
-          </div>
-          <a href="https://www.linkedin.com/in/rashed-alabidi" target="_blank" class="cert-link">عرض التفاصيل ←</a>
-        </div>
-
-        <div class="cert-item">
-          <div>
-            <div class="cert-title">مبادرة مركز الشباب العربي</div>
-            <div class="cert-issuer">LinkedIn Learning</div>
-          </div>
-          <a href="https://www.linkedin.com/in/rashed-alabidi" target="_blank" class="cert-link">عرض التفاصيل ←</a>
-        </div>
-
+    <!-- Social Impact & Volunteering -->
+    <section id="volunteering">
+      <div class="section-header">🌱 الأثر المجتمعي والعمل التطوعي</div>
+      <div class="card">
+        <h3>عضو فعال | فريق بذرة خير التطوعي</h3>
+        <p>المشاركة التنظيمية والتقنية في المبادرات التطوعية التنموية لدعم المجتمع والتوعية التقنية والأكاديمية.</p>
       </div>
     </section>
 
-    <!-- Contact Section -->
+    <!-- Contact Form -->
     <section id="contact">
-      <div class="section-header">📬 تواصل معي</div>
+      <div class="section-header">📬 التواصل الأكاديمي والشخصي</div>
       <form action="https://formsubmit.co/rashedalabidi7@gmail.com" method="POST">
         <div class="form-group">
-          <label>الاسم</label>
+          <label>الاسم الكامل</label>
           <input type="text" name="name" placeholder="أدخل اسمك" required>
         </div>
         <div class="form-group">
@@ -399,15 +385,15 @@
           <input type="email" name="email" placeholder="example@domain.com" required>
         </div>
         <div class="form-group">
-          <label>الرسالة</label>
-          <textarea name="message" rows="4" placeholder="اكتب رسالتك هنا..." required></textarea>
+          <label>الرسالة / استفسار التقديم</label>
+          <textarea name="message" rows="4" placeholder="اكتب رسالتك..." required></textarea>
         </div>
-        <button type="submit" class="btn-submit">إرسال الرسالة مباشرة</button>
+        <button type="submit" class="btn-submit">إرسال الرسالة</button>
       </form>
     </section>
 
     <footer>
-      <p>© 2026 رشيد العبيدي (Rashid Al-Qasir Alabidi)</p>
+      <p>© 2026 رشيد العبيدي (Rashid Al-Qasir Alabidi) — All Rights Reserved</p>
     </footer>
   </div>
 
