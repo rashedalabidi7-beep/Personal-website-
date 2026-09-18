@@ -192,6 +192,14 @@
     .project-body p { color: var(--muted); font-size: .9rem; }
     .project-actions { display: flex; gap: 10px; margin-top: 18px; }
 
+    .doi-badge {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: rgba(16, 185, 129, 0.1); border: 1px solid var(--line);
+      padding: 4px 12px; border-radius: 8px; font-size: 0.8rem;
+      color: var(--primary); font-family: "Space Grotesk", sans-serif;
+      margin-top: 10px; margin-bottom: 5px;
+    }
+
     .timeline { position: relative; display: grid; gap: 18px; }
     .timeline::before { content: ""; position: absolute; top: 8px; bottom: 8px; right: 12px; width: 2px; background: var(--line); }
     .timeline-item { position: relative; padding: 0 42px 4px 0; }
@@ -373,7 +381,7 @@
         <div class="section-head reveal">
           <div class="section-kicker">02 — الأبحاث والأوراق العلمية</div>
           <h2 class="section-title">النتاج البحثي والمعرفي</h2>
-          <p class="section-desc">أوراق بحثية تسلط الضوء على دور التقنية في الوعي والتنمية المجتمعية.</p>
+          <p class="section-desc">أوراق بحثية منشورة على منصة Zenodo تسلط الضوء على دور التقنية والشباب في الوعي والتنمية المجتمعية.</p>
         </div>
 
         <div class="projects-grid">
@@ -381,27 +389,35 @@
             <div class="project-top"><i class="fa-solid fa-book-bookmark"></i></div>
             <div class="project-body">
               <h3>دور التكنولوجيا في بناء مجتمعات أكثر وعياً</h3>
+              <div class="doi-badge"><i class="fa-solid fa-fingerprint"></i> DOI: 10.5281/zenodo.20088549</div>
               <p>
                 ورقة بحثية (مايو 2026) تستعرض دور المنصات الرقمية الحديثة والتعليم الإلكتروني في دعم التحول المعرفي وخدمة قضايا التنمية المجتمعية.
               </p>
               <div class="tags"><span class="tag">التحول المعرفي</span><span class="tag">التعليم الرقمي</span><span class="tag">البحث العلمي</span></div>
+              <div class="project-actions">
+                <a class="btn btn-primary" href="https://doi.org/10.5281/zenodo.20088549" target="_blank" rel="noopener"><i class="fa-solid fa-arrow-up-right-from-square"></i> عرض الورقة البحثية</a>
+              </div>
             </div>
           </article>
-
-          <article class="project glass reveal">
+           <article class="project glass reveal">
             <div class="project-top"><i class="fa-solid fa-users-gear"></i></div>
             <div class="project-body">
               <h3>دور الشباب في تعزيز التنمية المجتمعية باستخدام التكنولوجيا</h3>
+              <div class="doi-badge"><i class="fa-solid fa-fingerprint"></i> DOI: 10.5281/zenodo.17839145</div>
               <p>
                 ورقة بحثية (ديسمبر 2025) تسلط الضوء على آليات تمكين الشباب عبر الابتكار الرقمي وبناء المهارات التكنولوجية لضمان تنمية مستدامة.
               </p>
               <div class="tags"><span class="tag">تمكين الشباب</span><span class="tag">الابتكار الرقمي</span><span class="tag">التنمية المستدامة</span></div>
+              <div class="project-actions">
+                <a class="btn btn-primary" href="https://doi.org/10.5281/zenodo.17839145" target="_blank" rel="noopener"><i class="fa-solid fa-arrow-up-right-from-square"></i> عرض الورقة البحثية</a>
+              </div>
             </div>
           </article>
         </div>
       </div>
     </section>
-        <section id="skills">
+
+    <section id="skills">
       <div class="container">
         <div class="section-head reveal">
           <div class="section-kicker">03 — المهارات والقدرات</div>
@@ -425,7 +441,7 @@
           </article>
 
           <article class="skill-card glass reveal">
-            <div class="skill-icon"><i class="fa-solid fa-magnifying-glass font-awesome"></i></div>
+            <div class="skill-icon"><i class="fa-solid fa-magnifying-glass"></i></div>
             <h3>البحث العلمي وتحليل المعلومات</h3>
             <p>البحث الأكاديمي، تحليل البيانات المعقدة، استخدام قواعد البيانات العلمية وأدوات WIPO.</p>
             <div class="tags"><span class="tag">Research</span><span class="tag">Data Analysis</span></div>
@@ -538,7 +554,8 @@
         </div>
       </div>
     </section>
-        <section id="contact">
+
+    <section id="contact">
       <div class="container">
         <div class="section-head reveal">
           <div class="section-kicker">06 — التواصل والتطوع</div>
@@ -576,8 +593,7 @@
       </div>
     </section>
   </main>
-
-  <footer>
+    <footer>
     <div class="container">
       © <span id="year"></span> رشيد العبيدي — جميع الحقوق محفوظة.
     </div>
