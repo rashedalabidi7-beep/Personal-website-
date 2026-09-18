@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>لوحة التحكم | إدارة الصفحات</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+  <style>
+    :root {
+      --bg: #061412;
+      --card: rgba(12, 35, 31, 0.85);
+      --text: #f0fdfa;
+      --muted: #99f6e4;
+      --line: rgba(16, 185, 129, 0.25);
+      --primary: #10b981;
+      --secondary: #06b6d4;
+      --accent: #f59e0b;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: "Cairo", sans-serif;
+      background: linear-gradient(135deg, var(--bg), #04100e);
+      color: var(--text);
+      line-height: 1.8;
+      padding: 40px 0;
+      min-height: 100vh;
+    }
+
+    .container { width: min(800px, 92%); margin: auto; }
+    .glass {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      padding: 30px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+      backdrop-filter: blur(15px);
+    }
+
+    h1 { font-size: 1.8rem; margin-bottom: 8px; color: var(--primary); }
+    p.desc { color: var(--muted); font-size: 0.9rem; margin-bottom: 25px; }
+
+    .form-group { margin-bottom: 20px; }
+    label { display: block; margin-bottom: 8px; font-weight: 700; font-size: 0.95rem; }
+    input, textarea {
+      width: 100%; border: 1px solid var(--line); background: rgba(0, 0, 0, 0.3);
+      color: var(--text); border-radius: 12px; padding: 12px 15px; font: inherit; outline: none;
+    }
+    input:focus, textarea:focus { border-color: var(--primary); }
+    textarea { min-height: 180px; resize: vertical; }
+
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+      border-radius: 12px; padding: 12px 24px; border: none;
+      font-weight: 700; font-size: 1rem; cursor: pointer; transition: 0.25s;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: #03120e; width: 100%;
+    }
+    .btn:hover { opacity: 0.9; transform: translateY(-2px); }
+
+    .alert {
+      padding: 12px 16px; border-radius: 10px; font-weight: 600; font-size: 0.9rem;
+      margin-top: 15px; display: none;
+    }
+    .alert-success { background: rgba(16, 185, 129, 0.2); border: 1px solid var(--primary); color: #6ee7b7; }
+    .alert-error { background: rgba(239, 68, 68, 0.2); border: 1px solid #ef4444; color: #fca5a5; }
+    .note { font-size: 0.8rem; color: var(--accent); margin-top: 5px; }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="glass">
+      <h1><i class="fa-solid fa-file-circle-plus"></i> إنشاء صفحة جديدة</h1>
+      <p class="desc">قم بإضافة محتوى صفحتك الجديدة وسيتم حفظها ونشرها مباشرة على موقعك الشخصي.</p>
+
+      <form id="pageForm">
+        <div class="form-group">
+          <label><i class="fa-solid fa-key"></i> رمز الوصول الشخصي (GitHub Token)</label>
+          <input type="password" id="ghToken" placeholder="ghp_xxxxxxxxxxxx" required>
+          <div class="note">* يُحفظ الرمز في متصفحك المحلي فقط لحماية صلاحياتك.</div>
+        </div>
+
+        <div class="form-group">
+          <label><i class="fa-solid fa-heading"></i> عنوان الصفحة</label>
+          <input type="text" id="pageTitle" placeholder="مثال: مقال عن الذكاء الاصطناعي" required>
+        </div>
+
+        <div class="form-group">
+          <label><i class="fa-solid fa-link"></i> اسم رابط الصفحة (بالإنجليزية وبدون مسافات)</label>
+          <input type="text" id="pageSlug" placeholder="example-page" pattern="[a-zA-Z0-9-]+" title="استخدم حروف إنجليزية وأرقام وشخطات فقط" required>
+          <div class="note">* سيكون الرابط: personal-website-/pages/your-name.html</div>
+        </div>
+
+        <div class="form-group">
+          <label><i class="fa-solid fa-paragraph"></i> محتوى الصفحة (يدعم HTML أو نص عادي)</label>
+          <textarea id="pageContent" placeholder="اكتب تفاصيل ومحتوى الصفحة هنا..." required></textarea>
+        </div>
+
+        <button type="submit" class="btn" id="submitBtn"><i class="fa-solid fa-paper-plane"></i> حفظ ونشر الصفحة فوراً</button>
+      </form>
+
+      <div class="alert alert-success" id="successMsg"></div>
+      <div class="alert alert-error" id="errorMsg"></div>
+    </div>
+  </div>
+
+  <script>
+    const REPO_OWNER = 'rashedalabidi7-beep';
+    const REPO_NAME = 'Personal-website-';
+
+    // استرجاع التوكن المخزن محلياً
+    document.getElementById('ghToken').value = localStorage.getItem('gh_token') || '';
+
+    document.getElementById('pageForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      
+      const token = document.getElementById('ghToken').value.trim();
+      const title = document.getElementById('pageTitle').value.trim();
+      const slug = document.getElementById('pageSlug').value.trim().toLowerCase();
+      const content = document.getElementById('pageContent').value.trim();
+
+      const btn = document.getElementById('submitBtn');
+      const successMsg = document.getElementById('successMsg');
+      const errorMsg = document.getElementById('errorMsg');
+
+      successMsg.style.display = 'none';
+      errorMsg.style.display = 'none';
+      btn.disabled = true;
+      btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> جاري النشر والتحديث...';
+
+      // حفظ التوكن محلياً لاستخدامه لاحقاً
+      localStorage.setItem('gh_token', token);
+
+      // قوالب الصفحة المتناسقة مع تصميم الموقع
+      const htmlTemplate = `<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>${title} | رشيد العبيدي</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <style>
+    :root {
+      --bg: #061412; --card: rgba(12, 35, 31, 0.65);
+      --text: #f0fdfa; --muted: #99f6e4;
+      --line: rgba(16, 185, 129, 0.2); --primary: #10b981; --secondary: #06b6d4;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: "Cairo", sans-serif;
+      background: linear-gradient(135deg, var(--bg), #04100e 55%, #020a09);
+      color: var(--text); line-height: 1.85; padding: 100px 0 50px; min-height: 100vh;
+    }
+    .container { width: min(900px, 92%); margin: auto; }
+    .glass { background: var(--card); border: 1px solid var(--line); border-radius: 24px; padding: 35px; backdrop-filter: blur(20px); }
+    h1 { font-size: 2.2rem; margin-bottom: 20px; color: var(--primary); border-bottom: 1px solid var(--line); padding-bottom: 15px; }
+    .content { font-size: 1.05rem; color: var(--text); white-space: pre-wrap; }
+    .back-btn { display: inline-flex; align-items: center; gap: 8px; margin-top: 30px; color: var(--muted); text-decoration: none; font-weight: 700; }
+    .back-btn:hover { color: var(--primary); }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="glass">
+      <h1>${title}</h1>
+      <div class="content">${content}</div>
+      <a href="../index.html" class="back-btn"><i class="fa-solid fa-arrow-right"></i> العودة للرئيسية</a>
+    </div>
+  </div>
+</body>
+</html>`;
+
+      const filePath = `pages/${slug}.html`;
+      const url = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${filePath}`;
+
+      try {
+        // فحص هل الملف موجود مسبقاً لجلب sha الخاص به والتعديل عليه
+        let sha = '';
+        const checkRes = await fetch(url, { headers: { 'Authorization': `token ${token}` } });
+        if (checkRes.ok) {
+          const checkData = await checkRes.json();
+          sha = checkData.sha;
+        }
+
+        // تحويل النص إلى Base64 مع دعم اللغة العربية
+        const encoder = new TextEncoder();
+        const data = encoder.encode(htmlTemplate);
+        const base64Content = btoa(String.fromCharCode(...data));
+
+        // إرسال طلب الإنشاء/التحديث إلى GitHub
+        const res = await fetch(url, {
+          method: 'PUT',
+          headers: {
+            'Authorization': `token ${token}`,
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            message: `إضافة صفحة جديدة: ${title}`,
+            content: base64Content,
+            sha: sha ? sha : undefined
+          })
+        });
+
+        if (res.ok) {
+          const pageUrl = `https://${REPO_OWNER}.github.io/${REPO_NAME}/pages/${slug}.html`;
+          successMsg.innerHTML = `<i class="fa-solid fa-circle-check"></i> تم نشر الصفحة بنجاح!<br><a href="${pageUrl}" target="_blank" style="color:var(--primary)">اضغط هنا لمعاينة الصفحة</a> (قد تستغرق دقيقة لتظهر أول مرة).`;
+          successMsg.style.display = 'block';
+          document.getElementById('pageTitle').value = '';
+          document.getElementById('pageSlug').value = '';
+          document.getElementById('pageContent').value = '';
+        } else {
+          const err = await res.json();
+          throw new Error(err.message || 'تعذر الاتصال بـ GitHub');
+        }
+      } catch (err) {
+        errorMsg.innerHTML = `<i class="fa-solid fa-triangle-exclamation"></i> خطأ: ${err.message}. تأكد من صحة الرمز (Token) وصلاحياته.`;
+        errorMsg.style.display = 'block';
+      } finally {
+        btn.disabled = false;
+        btn.innerHTML = '<i class="fa-solid fa-paper-plane"></i> حفظ ونشر الصفحة فوراً';
+      }
+    });
+  </script>
+</body>
+</html>
