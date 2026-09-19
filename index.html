@@ -211,6 +211,8 @@
     .timeline-item .date { color: var(--primary); font-size: .78rem; }
     .timeline-item p { color: var(--muted); font-size: .88rem; margin-top: 4px; }
 
+    .volunteer-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+
     .contact-grid { display: grid; grid-template-columns: .8fr 1.2fr; gap: 20px; }
     .contact-list { display: grid; gap: 12px; margin-top: 18px; }
     .contact-item { display: flex; align-items: center; gap: 13px; color: var(--muted); }
@@ -242,12 +244,12 @@
       .nav-links.open { display: flex; }
       .nav-links a { padding: 8px 4px; }
       .menu-btn { display: block; }
-      .hero-grid, .about-grid, .contact-grid { grid-template-columns: 1fr; }
+      .hero-grid, .about-grid, .contact-grid, .volunteer-grid { grid-template-columns: 1fr; }
       .hero { padding-top: 125px; }
       .profile-wrap { max-width: 340px; margin-top: 20px; }
       .skills-grid { grid-template-columns: repeat(2, 1fr); }
     }
-        @media (max-width: 600px) {
+    @media (max-width: 600px) {
       .nav-inner { min-height: 68px; }
       .brand { font-size: 1rem; }
       .brand-mark { width: 37px; height: 37px; border-radius: 11px; }
@@ -278,7 +280,8 @@
         <a href="#research">الأبحاث</a>
         <a href="#skills">المهارات</a>
         <a href="#projects">المشاريع</a>
-        <a href="#experience">الإنجازات والتدريب</a>
+        <a href="#experience">البرامج والمؤهلات</a>
+        <a href="#volunteering">التطوع والمبادرات</a>
         <a href="#contact">تواصل معي</a>
       </nav>
 
@@ -387,19 +390,23 @@
         <div class="projects-grid">
           <article class="project glass reveal">
             <div class="project-top"><i class="fa-solid fa-book-bookmark"></i></div>
+          <div class="projects-grid">
+          <article class="project glass reveal">
+            <div class="project-top"><i class="fa-solid fa-book-bookmark"></i></div>
             <div class="project-body">
               <h3>دور التكنولوجيا في بناء مجتمعات أكثر وعياً</h3>
               <div class="doi-badge"><i class="fa-solid fa-fingerprint"></i> DOI: 10.5281/zenodo.20088549</div>
               <p>
                 ورقة بحثية (مايو 2026) تستعرض دور المنصات الرقمية الحديثة والتعليم الإلكتروني في دعم التحول المعرفي وخدمة قضايا التنمية المجتمعية.
               </p>
-              <div class="tags"><span class="tag">التحول المعرفي</span><span class="tag">التعليم الرقمي</span><span class="tag">البحث العلمي</span></div>
+                    <div class="tags"><span class="tag">التحول المعرفي</span><span class="tag">التعليم الرقمي</span><span class="tag">البحث العلمي</span></div>
               <div class="project-actions">
                 <a class="btn btn-primary" href="https://doi.org/10.5281/zenodo.20088549" target="_blank" rel="noopener"><i class="fa-solid fa-arrow-up-right-from-square"></i> عرض الورقة البحثية</a>
               </div>
             </div>
-                </article>
-                        <article class="project glass reveal">
+          </article>
+
+          <article class="project glass reveal">
             <div class="project-top"><i class="fa-solid fa-users-gear"></i></div>
             <div class="project-body">
               <h3>دور الشباب في تعزيز التنمية المجتمعية باستخدام التكنولوجيا</h3>
@@ -416,7 +423,8 @@
         </div>
       </div>
     </section>
-        <section id="skills">
+
+    <section id="skills">
       <div class="container">
         <div class="section-head reveal">
           <div class="section-kicker">03 — المهارات والقدرات</div>
@@ -521,6 +529,11 @@
 
         <div class="timeline">
           <div class="timeline-item reveal">
+            <div class="date">أغسطس 2026 - الحالي</div>
+            <h3>برنامج الجاهزية المهنية للشباب العربي (مقبول ومحاضر)</h3>
+            <p>مبادرة أطلقها <strong>مركز الشباب العربي</strong> بالتعاون مع منصة <strong>LinkedIn Learning</strong> بهدف تمكين الشباب واكتساب مهارات عملية وشهادات مهنية معترف بها وبناء ملفات شخصية احترافية لمواكبة متطلبات سوق العمل (يمتد لمدة 5 أشهر ويشمل 10 مسارات تعليمية وتقنية).</p>
+          </div>
+          <div class="timeline-item reveal">
             <div class="date">يوليو 2026</div>
             <h3>برنامج ماكنزي فورورد — McKinsey Forward | McKinsey & Company</h3>
             <p>برنامج مكثف لتطوير المهارات القيادية والتحليلية، القيادة التكيفية، وحل المشكلات المعقدة بناءً على البيانات.</p>
@@ -554,10 +567,43 @@
       </div>
     </section>
 
-    <section id="contact">
+    <section id="volunteering">
       <div class="container">
         <div class="section-head reveal">
-          <div class="section-kicker">06 — التواصل والتطوع</div>
+          <div class="section-kicker">06 — الأثر المجتمعي</div>
+          <h2 class="section-title">المبادرات والأنشطة التطوعية</h2>
+          <p class="section-desc">المشاركات والأنشطة التطوعية التي أسهمت في بناء وخدمة المجتمع والشباب.</p>
+        </div>
+
+        <div class="volunteer-grid">
+          <article class="card glass reveal">
+            <h3><i class="fa-solid fa-hands-holding-child gradient-text"></i> فريق بذرة خير التطوعي</h3>
+            <p>
+              عضو فعال في فريق بذرة خير التطوعي، والمشاركة في التنظيم والمساهمة في تنفيذ المبادرات والأنشطة الإنسانية والمجتمعية المختلفة.
+            </p>
+            <div class="tags" style="margin-top:12px;">
+              <span class="tag">العمل التطوعي</span>
+              <span class="tag">المبادرات المجتمعية</span>
+            </div>
+          </article>
+
+          <article class="card glass reveal">
+            <h3><i class="fa-solid fa-graduation-cap gradient-text"></i> ملتقى شباب قبيلة العبيدي ودعم الطلاب</h3>
+            <p>
+              المشاركة في الأنشطة والبرامج الموجهة لدعم الطلاب وتسهيل مسيرتهم التعليمية وتوجيههم وتأهيلهم للبيئات الأكاديمية.
+            </p>
+            <div class="tags" style="margin-top:12px;">
+              <span class="tag">دعم الطلاب</span>
+              <span class="tag">التوجيه الأكاديمي</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+       <section id="contact">
+      <div class="container">
+        <div class="section-head reveal">
+          <div class="section-kicker">07 — التواصل والتطوع</div>
           <h2 class="section-title">لنتواصل ونعمل معًا</h2>
           <p class="section-desc">منفتح للتعاون في المشاريع التقنية والفرص التعليمية والتطوعية.</p>
         </div>
@@ -686,4 +732,4 @@
     });
   </script>
 </body>
-  </html>
+</html>
